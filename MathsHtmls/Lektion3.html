@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="timer">0</p>
+    <p id="score">0</p>
+    <button id="button" onclick="clickHandler()">
+      click
+    </button>
+
+    <script>
+      const timer = document.getElementById('timer');
+      const score = document.getElementById('score');
+      const button = document.getElementById('button');
+      let x = 0;
+      let y = 0;
+
+      const myConst = setInterval(myCounter, 1000);
+
+      function myCounter() {
+        if (x < 11) {
+          timer.innerHTML = x;
+          x++;
+        } else {
+          button.disabled = true;
+          clearInterval(myConst);
+        }
+      }
+      function clickHandler() {
+        y++;
+        score.innerHTML = y;
+      }
+    </script>
+  </body>
+</html>

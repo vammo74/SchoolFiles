@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="timer">
+      <span id="10">0</span><span id="1">0</span><span id="decimal">,</span
+      ><span id="1/10">0</span><span id="1/100">0</span
+      >
+    </p>
+    <p id="score">0</p>
+    <button id="button" onclick="clickHandler()">click</button>
+
+    <script>
+      const timer = document.getElementById('timer');
+      const score = document.getElementById('score');
+      const button = document.getElementById('button');
+      const S1 = document.getElementById('10');
+      const S2 = document.getElementById('1');
+      const S3 = document.getElementById('1/10');
+      const S4 = document.getElementById('1/100');
+
+      let x = 0;
+      let y = 0;
+
+      const myConst = setInterval(myCounter, 10);
+
+      function myCounter() {
+        if (x < 1001) {
+          text = x.toString();
+          if (text.length === 1) {
+            S4.innerText = text[0];
+          } else if (text.length === 2) {
+            S4.innerText = text[1];
+            S3.innerText = text[0];
+          } else if (text.length === 3) {
+            S4.innerText = text[2];
+            S3.innerText = text[1];
+            S2.innerText = text[0];
+          } else {
+            S4.innerText = text[3];
+            S3.innerText = text[2];
+            S2.innerText = text[1];
+            S1.innerText = text[0];
+          }
+          x++;
+        } else {
+          button.disabled = true;
+          clearInterval(myConst);
+        }
+      }
+      function clickHandler() {
+        y++;
+        score.innerHTML = y;
+      }
+    </script>
+  </body>
+</html>
